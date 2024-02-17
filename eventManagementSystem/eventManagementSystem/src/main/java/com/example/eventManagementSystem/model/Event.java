@@ -1,9 +1,6 @@
 package com.example.eventManagementSystem.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -20,19 +17,21 @@ public class Event {
     private Date date;
     private String location;
     private Integer capacity;
-//    private User user;
+    @ManyToOne
+    private User user;
+
 
     public Event() {
     }
 
-    public Event(Long id, String title, String description, Date date, String location, Integer capacity) {
+    public Event(Long id, String title, String description, Date date, String location, Integer capacity , User user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
         this.location = location;
         this.capacity = capacity;
-//        this.user = user;
+        this.user = user;
     }
 
     @Override
